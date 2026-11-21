@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>LIVING SPACES — POÄNG / WINGBACK (3D & AR Experience)</title>
-  
+
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <!-- Model Viewer by Google -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
@@ -22,7 +24,8 @@
       user-select: none;
     }
 
-    body, html {
+    body,
+    html {
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -438,16 +441,23 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- High-Performance Interactive 3D Model Canvas -->
-  <model-viewer
-    id="armchair-viewer"
+  <model-viewer id="armchair-viewer"
     src="https://cdn.jsdelivr.net/gh/ricardoespinosatec/ar-furniture-assets@main/emerald_lounge_armchair.glb"
     ios-src="https://cdn.jsdelivr.net/gh/ricardoespinosatec/ar-furniture-assets@main/emerald_lounge_armchair.usdz"
     alt="Sillón Lounge Esmeralda de diseño orgánico en nogal y eco-cuero capitoné"
@@ -476,30 +486,41 @@
 
   <!-- Apple Vision Pro Spatial Interface Layer -->
   <div class="spatial-overlay">
-    
+
     <!-- 1. Top Navigation Bar -->
     <div class="top-bar interactive">
       <div class="glass-panel icon-btn" title="Atrás" onclick="history.back()">
-        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#2C3E50" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path fill="#2C3E50" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
       </div>
 
       <div class="glass-panel url-pill">
         <div class="url-text">
-          <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#718093" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          <svg viewBox="0 0 24 24" width="14" height="14">
+            <path fill="#718093"
+              d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+          </svg>
           <span>buyfurniture.ca</span>
         </div>
-        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="#718093" d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+        <svg viewBox="0 0 24 24" width="16" height="16">
+          <path fill="#718093"
+            d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" />
+        </svg>
       </div>
 
       <div class="glass-panel cart-pill" onclick="alert('Carrito: 2 artículos guardados')">
         <span>2 items</span>
-        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#1E514A" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <svg viewBox="0 0 24 24" width="18" height="18">
+          <path fill="#1E514A"
+            d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
       </div>
     </div>
 
     <!-- 2. Center Stage Controls (Radial and HUD) -->
     <div class="center-stage">
-      
+
       <!-- Left Recommendations Pill -->
       <div id="recs-panel" class="glass-panel left-recommendations interactive" onclick="toggleRecs()">
         <span class="vertical-label">You may also like</span>
@@ -508,19 +529,30 @@
       <!-- Right Radial Action Buttons -->
       <div class="right-actions interactive">
         <div class="glass-panel action-circle highlight" title="Ver en tu cuarto (AR)" onclick="launchAR()">
-          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
         </div>
 
         <div class="glass-panel action-circle" title="Personalizar Color" onclick="toggleColors()">
-          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+          </svg>
         </div>
 
         <div class="glass-panel action-circle" title="Medidas 1:1" onclick="toggleDimensions()">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM8 7h2v3h3v2H8V7z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM8 7h2v3h3v2H8V7z" />
+          </svg>
         </div>
 
-        <div class="glass-panel action-circle" title="Iluminación" onclick="alert('Iluminación HDRI ambiental calibrada a 5500K')">
-          <svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+        <div class="glass-panel action-circle" title="Iluminación"
+          onclick="alert('Iluminación HDRI ambiental calibrada a 5500K')">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
+          </svg>
         </div>
       </div>
 
@@ -537,10 +569,14 @@
       <div id="color-modal" class="glass-panel color-modal interactive">
         <div style="font-size: 11px; font-weight: 700; color: #1E514A; margin-bottom: 2px;">Tapizado PBR</div>
         <div class="swatch-list">
-          <div class="swatch-item" style="background: #1E514A;" title="Verde Esmeralda" onclick="changeColor([0.012, 0.085, 0.065, 1.0])"></div>
-          <div class="swatch-item" style="background: #8D5B36;" title="Cuero Coñac" onclick="changeColor([0.55, 0.28, 0.12, 1.0])"></div>
-          <div class="swatch-item" style="background: #2C3E50;" title="Carbón Mate" onclick="changeColor([0.15, 0.18, 0.22, 1.0])"></div>
-          <div class="swatch-item" style="background: #C7B299;" title="Lino Crema" onclick="changeColor([0.78, 0.70, 0.60, 1.0])"></div>
+          <div class="swatch-item" style="background: #1E514A;" title="Verde Esmeralda"
+            onclick="changeColor([0.012, 0.085, 0.065, 1.0])"></div>
+          <div class="swatch-item" style="background: #8D5B36;" title="Cuero Coñac"
+            onclick="changeColor([0.55, 0.28, 0.12, 1.0])"></div>
+          <div class="swatch-item" style="background: #2C3E50;" title="Carbón Mate"
+            onclick="changeColor([0.15, 0.18, 0.22, 1.0])"></div>
+          <div class="swatch-item" style="background: #C7B299;" title="Lino Crema"
+            onclick="changeColor([0.78, 0.70, 0.60, 1.0])"></div>
         </div>
       </div>
 
@@ -558,7 +594,10 @@
       <div class="product-header">
         <div class="product-meta">
           <div class="product-avatar">
-            <svg viewBox="0 0 24 24"><path d="M20 10V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L4 21h2l.67-2h10.66l.67 2h2l.67-2H22v-5c0-1.1-.9-2-2-2zm-9 0H6V7h5v3zm7 0h-5V7h5v3z"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 10V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L4 21h2l.67-2h10.66l.67 2h2l.67-2H22v-5c0-1.1-.9-2-2-2zm-9 0H6V7h5v3zm7 0h-5V7h5v3z" />
+            </svg>
           </div>
           <div>
             <div class="product-title">POÄNG / WINGBACK</div>
@@ -575,12 +614,17 @@
 
       <div class="card-actions">
         <button class="btn-ar" onclick="launchAR()">
-          <svg viewBox="0 0 24 24"><path d="M12 2L4 6v12l8 4 8-4V6l-8-4zm6 14.5l-6 3-6-3V7.5l6-3 6 3v9z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L4 6v12l8 4 8-4V6l-8-4zm6 14.5l-6 3-6-3V7.5l6-3 6 3v9z" />
+          </svg>
           <span>Ver en tu cuarto (AR)</span>
         </button>
 
         <div class="glass-panel btn-bag" onclick="alert('Sillón agregado a tu carrito')">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#2C3E50" d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="#2C3E50"
+              d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z" />
+          </svg>
         </div>
       </div>
     </div>
@@ -605,18 +649,7 @@
     }
 
     function launchAR() {
-      // Prioritize native Google Scene Viewer on Android for true 6DoF floor anchoring & pinch-to-scale
-      const isAndroid = /android/i.test(navigator.userAgent);
-      if (isAndroid) {
-        const glbUrl = 'https://cdn.jsdelivr.net/gh/ricardoespinosatec/ar-furniture-assets@main/emerald_lounge_armchair.glb';
-        const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(glbUrl) +
-          '&mode=ar_only&resizable=true&title=' + encodeURIComponent('Sillón Lounge Esmeralda (1:1)') +
-          '#Intent;scheme=https;action=android.intent.action.VIEW;end;';
-        window.location.href = sceneViewerUrl;
-        return;
-      }
-
-      // Fallback to model-viewer activateAR() for iOS Quick Look and other browsers
+      // Direct Model-Viewer activateAR() supporting Scene Viewer, WebXR and iOS Quick Look
       if (mv && typeof mv.activateAR === 'function') {
         mv.activateAR();
       } else {
@@ -659,4 +692,5 @@
     }
   </script>
 </body>
+
 </html>
