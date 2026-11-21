@@ -559,6 +559,15 @@
       }
     }
 
+    // Auto-launch AR if requested via URL hash or query param
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash === '#ar' || window.location.search.includes('ar=1')) {
+        mv.addEventListener('load', () => {
+          setTimeout(launchAR, 400);
+        }, { once: true });
+      }
+    });
+
     function toggleDimensions() {
       const hud = document.getElementById('dim-hud');
       hud.classList.toggle('show');
