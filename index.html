@@ -460,26 +460,12 @@
   <model-viewer id="armchair-viewer"
     src="https://ricardoespinosatec.github.io/ar-furniture-assets/emerald_lounge_armchair.glb"
     ios-src="https://ricardoespinosatec.github.io/ar-furniture-assets/emerald_lounge_armchair.usdz"
-    alt="Sillón Lounge Esmeralda de diseño orgánico en nogal y eco-cuero capitoné"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    ar-scale="auto"
-    ar-placement="floor"
-    camera-controls
-    touch-action="pan-y"
-    camera-orbit="152deg 68deg 1.70m"
-    min-camera-orbit="auto 15deg 1.05m"
-    max-camera-orbit="auto 88deg 2.7m"
-    field-of-view="32deg"
-    shadow-intensity="1.0"
-    shadow-softness="0.8"
-    exposure="1.0"
-    environment-image="neutral"
-    interaction-prompt="none"
-    loading="eager"
-    auto-rotate
-    rotation-per-second="20deg">
-    
+    alt="Sillón Lounge Esmeralda de diseño orgánico en nogal y eco-cuero capitoné" ar
+    ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor" camera-controls touch-action="pan-y"
+    camera-orbit="152deg 68deg 1.70m" min-camera-orbit="auto 15deg 1.05m" max-camera-orbit="auto 88deg 2.7m"
+    field-of-view="32deg" shadow-intensity="1.0" shadow-softness="0.8" exposure="1.0" environment-image="neutral"
+    interaction-prompt="none" loading="eager" auto-rotate rotation-per-second="20deg">
+
     <!-- Hidden native button, triggered via spatial UI -->
     <button slot="ar-button" id="native-ar-btn" style="display: none;"></button>
   </model-viewer>
@@ -649,7 +635,7 @@
     }
 
     function launchAR() {
-      // Direct Model-Viewer activateAR() supporting Scene Viewer, WebXR and iOS Quick Look
+      // Direct Model-Viewer activateAR() supporting WebXR, Scene Viewer and iOS Quick Look
       if (mv && typeof mv.activateAR === 'function') {
         mv.activateAR();
       } else {
@@ -657,15 +643,6 @@
         if (btn) btn.click();
       }
     }
-
-    // Auto-launch AR if requested via URL hash or query param
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.location.hash === '#ar' || window.location.search.includes('ar=1')) {
-        mv.addEventListener('load', () => {
-          setTimeout(launchAR, 400);
-        }, { once: true });
-      }
-    });
 
     function toggleDimensions() {
       const hud = document.getElementById('dim-hud');
