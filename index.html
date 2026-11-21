@@ -40,6 +40,40 @@
       touch-action: pan-y;
     }
 
+    /* Rotate Quick Pill */
+    .rotate-pill {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      z-index: 15;
+    }
+
+    .rotate-btn {
+      background: transparent;
+      border: none;
+      color: #1E514A;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .rotate-btn:active {
+      background: rgba(30, 81, 74, 0.15);
+    }
+
+    .rotate-btn.reset {
+      background: rgba(30, 81, 74, 0.12);
+    }
+
     /* Spatial Glassmorphism Common Styles */
     .glass-panel {
       background: rgba(255, 255, 255, 0.45);
@@ -418,11 +452,11 @@
     ios-src="https://cdn.jsdelivr.net/gh/ricardoespinosatec/ar-furniture-assets@main/emerald_lounge_armchair.usdz"
     alt="Sillón Lounge Esmeralda de diseño orgánico en nogal y eco-cuero capitoné"
     ar
-    ar-modes="webxr scene-viewer quick-look"
+    ar-modes="scene-viewer webxr quick-look"
     ar-scale="auto"
     ar-placement="floor"
     camera-controls
-    touch-action="none"
+    touch-action="pan-y"
     camera-orbit="152deg 68deg 1.70m"
     min-camera-orbit="auto 15deg 1.05m"
     max-camera-orbit="auto 88deg 2.7m"
@@ -510,6 +544,13 @@
         </div>
       </div>
 
+      <!-- Quick Rotate Bar (VisionOS Glass Pill) -->
+      <div class="rotate-pill interactive glass-panel">
+        <button class="rotate-btn" onclick="rotateOrbit(-45)">↺ -45°</button>
+        <button class="rotate-btn reset" onclick="resetOrbit()">Frente</button>
+        <button class="rotate-btn" onclick="rotateOrbit(45)">↻ +45°</button>
+      </div>
+
     </div>
 
     <!-- 3. Bottom Product Summary Card -->
@@ -548,9 +589,34 @@
 
   <script>
     const mv = document.getElementById('armchair-viewer');
+    let currentTheta = 152;
+
+    function rotateOrbit(delta) {
+      if (!mv) return;
+      currentTheta = (currentTheta + delta) % 360;
+      mv.cameraOrbit = `${currentTheta}deg 68deg 1.70m`;
+    }
+
+    function resetOrbit() {
+      if (!mv) return;
+      currentTheta = 152;
+      mv.cameraOrbit = '152deg 68deg 1.70m';
+      mv.cameraTarget = '0m 0.20m 0m';
+    }
 
     function launchAR() {
-      // 1. Direct Model-Viewer activateAR() supporting WebXR, Scene Viewer and iOS Quick Look
+      // Prioritize native Google Scene Viewer on Android for true 6DoF floor anchoring & pinch-to-scale
+      const isAndroid = /android/i.test(navigator.userAgent);
+      if (isAndroid) {
+        const glbUrl = 'https://cdn.jsdelivr.net/gh/ricardoespinosatec/ar-furniture-assets@main/emerald_lounge_armchair.glb';
+        const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=' + encodeURIComponent(glbUrl) +
+          '&mode=ar_only&resizable=true&title=' + encodeURIComponent('Sillón Lounge Esmeralda (1:1)') +
+          '#Intent;scheme=https;action=android.intent.action.VIEW;end;';
+        window.location.href = sceneViewerUrl;
+        return;
+      }
+
+      // Fallback to model-viewer activateAR() for iOS Quick Look and other browsers
       if (mv && typeof mv.activateAR === 'function') {
         mv.activateAR();
       } else {
